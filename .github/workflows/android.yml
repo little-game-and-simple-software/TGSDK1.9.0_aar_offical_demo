@@ -3,6 +3,7 @@ name: Android CI
 on:
   push:
     branches: [ master ]
+    workflow_dispatch: true
   pull_request:
     branches: [ master ]
 
@@ -21,8 +22,8 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-    - name: compile
+    - name: pack_debug_apk
       uses: actions/upload-artifact@v2
       with: 
         name: apk
-        path: app/build/outputs/debug.apk
+        path: app/debug/app-debug.apk
